@@ -37,9 +37,9 @@ cat << EOF > /var/www/html/index.nginx-debian.html
 EOF
 
 
-echo "'usertest'@'localhost' IDENTIFIED BY 'password';" > /home/mysqluserpas
+echo "'dbUser=myusername dbPass=mypassword;" > /home/mysqluserpas
 pwd="$(date +%s | sha256sum | base64 | head -c 32)"
-sed -i "s/password/$pwd/g"  /home/mysqluserpas
+sed -i "s/mypassword/$pwd/g"  /home/mysqluserpas
 
 sudo mysql
 
