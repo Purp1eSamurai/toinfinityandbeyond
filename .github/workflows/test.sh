@@ -35,3 +35,11 @@ cat << EOF > /var/www/html/index.nginx-debian.html
 </body>
 </html>
 EOF
+
+
+echo "'usertest'@'localhost' IDENTIFIED BY 'password';" > /home/mysqluserpas
+pwd="$(date +%s | sha256sum | base64 | head -c 32)"
+sed -i "s/password/$pwd/g"  /home/mysqluserpas
+
+sudo mysql
+
