@@ -1,19 +1,17 @@
 #!/bin/bash
-PATH=/etc:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 
-password_file='/etc/testuser.scrt'
-user='user1'
-ip='192.168.31.0'
+if="eth0"
+ssh="22"
+http="80"
+https="443"
+soft="mc unzip curl wget git nginx"
 
-apt update && apt upgrade -y
-apt install mc -y
-apt update && apt upgrade -y
-apt install unzip -y
-apt update && apt upgrade -y
-apt install curl -y
-apt update && apt upgrade -y
-apt install curl -y
-apt update && apt upgrade -y
-apt install wget -y
-apt update && apt upgrade -y
-apt install git -y
+sudo ufw allow in on "$if" to any port "http"
+sudo ufw allow in on "$if" to any port "$https"
+sudo ufw allow in on "$if" to any port "$ssh" 
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw --force enable
+sudo apt-get update && upgrade
+apt-get install "$soft"
+service ngninx start
