@@ -12,7 +12,7 @@ sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw --force enable
 sudo apt update
-apt-get install -y mc unzip curl nginx mysql-server mysql-client
+apt install -y mc unzip curl nginx mysql-server mysql-client
 service nginx enable
 service nginx start
 cat << EOF > /var/www/html/index.nginx-debian.html
