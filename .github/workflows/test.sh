@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if="eth0"
+if="ens18"
 ssh="22"
 http="80"
 https="443"
