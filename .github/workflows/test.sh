@@ -35,5 +35,14 @@ echo "'dbUser=myusername dbPass=mypassword;" > /home/mysqluserpas
 pwd="$(date +%s | sha256sum | base64 | head -c 32)"
 sed -i "s/mypassword/$pwd/g"  /home/mysqluserpas
 
-sudo mysql
+sudo mysql -u root -p
+CREATE DATABASE testbase
+CREATE USER myusername@localhost IDENTIFIED by ‘$pwd’;
+GRANT ALL PRIVILEGES ON testbase.* TO ‘mysqluser’@’localhost’;
+FLUSH PRIVILEGES;
+QUIT
+mysql -u mysqluser -p
+
+USE continents
+
 
