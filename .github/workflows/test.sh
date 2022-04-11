@@ -44,7 +44,7 @@ mysql -e "CREATE USER 'usertest'@'localhost' IDENTIFIED by ‘$pwd’;"
 mysql -e "GRANT ALL PRIVILEGES ON database_test.* TO 'usertest'@'localhost';"
 mysql -e "FLUSH PRIVILEGES;"
 mysql -e "QUIT"
-mysql -e mysql -u usertest -p
+#mysql -e mysql -u usertest -p
 
  
 
