@@ -41,7 +41,7 @@ sed -i "s/mypassword/$pwd/g"  /home/mysqluserpas
 sudo mysql -u root 
 mysql -e "CREATE DATABASE database_test;"
 mysql -e "CREATE USER 'usertest'@'localhost' IDENTIFIED by ‘$pwd’;"
-mysql -e "GRANT ALL PRIVILEGES ON testbase.* TO ‘usertest’@’localhost’;"
+mysql -e "GRANT ALL PRIVILEGES ON database_test.* TO 'usertest'@'localhost';"
 mysql -e "FLUSH PRIVILEGES;"
 mysql -e "QUIT"
 mysql -e mysql -u usertest -p
