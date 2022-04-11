@@ -45,7 +45,7 @@ mysql -e "GRANT SELECT, INSERT, DELETE, UPDATE  ON database_test.* TO 'usertest'
 mysql -e "FLUSH PRIVILEGES;"
 mysql -e "CREATE TABLE IF NOT EXISTS database_test.orders (id INT, имя text, цена INT,PRIMARY KEY(id));"
 mysql -e "CREATE TABLE IF NOT EXISTS database_test.clients (id INT PRIMARY KEY, фамилия text, страна text, заказ INT, FOREIGN KEY(заказ) REFERENCES orders(id));"
-
+mysql -e "INSERT INTO database_test.orders VALUEs (1, 'Chocolate', 10), (2, 'Printer', 3000), (3, 'Book', 500), (4, 'Monitor' 7000), (5, 'Guitar', 4000);"
  
 
 
