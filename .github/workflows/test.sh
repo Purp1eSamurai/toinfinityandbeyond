@@ -43,7 +43,9 @@ mysql -e "CREATE DATABASE IF NOT EXISTS database_test;"
 mysql -e "CREATE USER IF NOT EXISTS 'usertest'@'localhost' IDENTIFIED by '$pwd';"
 mysql -e "GRANT SELECT, INSERT, DELETE, UPDATE  ON database_test.* TO 'usertest'@'localhost';"
 mysql -e "FLUSH PRIVILEGES;"
-
+mysql -e "USE database_test;"
+mysql -e "CREATE TABLE IF NOT EXISTS orders (id (serial primary key) наименование (string) цена (integer);"
+mysql -e "CREATE TABLE IF NOT EXISTS clients (id (serial primary key) фамилия (string) страна проживания (string, index) заказ (foreign key orders);"
 
  
 
