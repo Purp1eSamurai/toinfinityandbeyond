@@ -4,6 +4,8 @@ if="ens18"
 ssh="22"
 http="80"
 https="443"
+User="dbUser=usertest"
+Pass="dbPass=mypassword"
 
 sudo ufw allow in on "$if" to any port "$http"
 sudo ufw allow in on "$if" to any port "$https"
@@ -31,7 +33,7 @@ cat << EOF > /var/www/html/index.nginx-debian.html
 EOF
 
 
-echo "'dbUser=usertest dbPass=mypassword;" > /home/mysqluserpas
+echo "'$User;" > /home/mysqluserpas
 pwd="$(date +%s | sha256sum | base64 | head -c 32)"
 sed -i "s/mypassword/$pwd/g"  /home/mysqluserpas
 
