@@ -37,7 +37,8 @@ echo "$User" "$Pass" > /home/mysqluserpas
 pwd="$(date +%s | sha256sum | base64 | head -c 32)"
 sed -i "s/mypassword/$pwd/g"  /home/mysqluserpas
 
-sudo mysql -u root -p
+
+sudo mysql -u root 
 CREATE DATABASE testbase;
 CREATE USER usertest@localhost IDENTIFIED by ‘’;
 GRANT ALL PRIVILEGES ON testbase.* TO ‘usertest’@’localhost’;
