@@ -31,17 +31,17 @@ cat << EOF > /var/www/html/index.nginx-debian.html
 EOF
 
 
-echo "'dbUser=myusername dbPass=mypassword;" > /home/mysqluserpas
+echo "'dbUser=usertest dbPass=mypassword;" > /home/mysqluserpas
 pwd="$(date +%s | sha256sum | base64 | head -c 32)"
 sed -i "s/mypassword/$pwd/g"  /home/mysqluserpas
 
 sudo mysql -u root -p
 CREATE DATABASE testbase;
-CREATE USER myusername@localhost IDENTIFIED by ‘’;
-GRANT ALL PRIVILEGES ON testbase.* TO ‘mysqluser’@’localhost’;
+CREATE USER usertest@localhost IDENTIFIED by ‘’;
+GRANT ALL PRIVILEGES ON testbase.* TO ‘usertest’@’localhost’;
 FLUSH PRIVILEGES;
 QUIT
-mysql -u mysqluser -p
+mysql -u usertest -p
 
 USE testbase
 
