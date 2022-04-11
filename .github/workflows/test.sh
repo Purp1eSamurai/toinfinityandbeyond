@@ -33,7 +33,7 @@ cat << EOF > /var/www/html/index.nginx-debian.html
 EOF
 
 
-echo "'$User $Pass;" > /home/mysqluserpas
+echo "$User" "$Pass" > /home/mysqluserpas
 pwd="$(date +%s | sha256sum | base64 | head -c 32)"
 sed -i "s/mypassword/$pwd/g"  /home/mysqluserpas
 
