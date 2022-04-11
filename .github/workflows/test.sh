@@ -37,7 +37,7 @@ sed -i "s/mypassword/$pwd/g"  /home/mysqluserpas
 
 sudo mysql -u root -p
 CREATE DATABASE testbase
-CREATE USER myusername@localhost IDENTIFIED by ‘$pwd’;
+CREATE USER myusername@localhost IDENTIFIED by ‘’;
 GRANT ALL PRIVILEGES ON testbase.* TO ‘mysqluser’@’localhost’;
 FLUSH PRIVILEGES;
 QUIT
