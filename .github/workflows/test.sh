@@ -38,7 +38,6 @@ pwd="$(date +%s | sha256sum | base64 | head -c 32)"
 sed -i "s/mypassword/$pwd/g"  /home/mysqluserpas
 
 
-sudo mysql -u root 
 mysql -e "CREATE DATABASE IF NOT EXISTS database_test;"
 mysql -e "CREATE USER IF NOT EXISTS 'usertest'@'localhost' IDENTIFIED by '$pwd';"
 mysql -e "GRANT SELECT, INSERT, DELETE, UPDATE  ON database_test.* TO 'usertest'@'localhost';"
