@@ -37,9 +37,9 @@ echo "$User" "$Pass" > /home/mysqluserpas
 pwd="$(date +%s | sha256sum | base64 | head -c 32)"
 sed -i "s/mypassword/$pwd/g"  /home/mysqluserpas
 
-mkdir /home/myvalue
-echo "1,Шоколад,10|2,Принтер,3000|3,Книга,500|4,Монитор,7000|5,Гитара,4000 > /home/myvalue/values1.txt"
-echo "1,Иванов,USA,3|2,Петров,Canada,2|3,Chan,Japan,5|4,Дмитриев,Russia,1|5,Blackmore,Russia,4 > /home/myvalue/values.txt"
+#mkdir /home/myvalue
+#echo "1,Шоколад,10|2,Принтер,3000|3,Книга,500|4,Монитор,7000|5,Гитара,4000 > /home/myvalue/values1.txt"
+#echo "1,Иванов,USA,3|2,Петров,Canada,2|3,Chan,Japan,5|4,Дмитриев,Russia,1|5,Blackmore,Russia,4 > /home/myvalue/values.txt"
 
 
 mysql -e "CREATE DATABASE IF NOT EXISTS database_test;"
