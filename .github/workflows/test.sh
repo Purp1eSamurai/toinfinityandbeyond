@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if="ens18"
-ssh="22"
+if="ens18"   
+ssh="22"    
 http="80"
 https="443"
 User="dbUser=usertest"
@@ -54,6 +54,23 @@ mysql -e "CREATE TABLE IF NOT EXISTS database_test.clients (id INT PRIMARY KEY, 
 #mysql -e "INSERT IGNORE INTO database_test.clients VALUES (1, 'Иванов', 'USA',3), (2, 'Петров' 'Canada'2), (3, 'Chan' 'Japan',5), (4, 'Дмитриев', 'Russia',1),(5, 'Blackmore', 'Russia',4);"
 mysql -e "LOAD DATA LOCAL INFILE '/home/myvalue/values1.txt' INTO TABLE database_test.orders FIELDS TERMINATED BY ',' LINES TERMINATED BY '|';"
 mysql -e "LOAD DATA LOCAL INFILE '/home/myvalue/values.txt' INTO TABLE database_test.clients FIELDS TERMINATED BY ',' LINES TERMINATED BY '|';"
+
+
+mysql -e "DROP TABLE IF EXISTS database_test.temptable;"
+mysql -e "DROP TABLE IF EXISTS database_test.temptable1;"
+mysql -e "CREATE TABLE database_test.temptable (id INT, имя text, цена INT);"
+mysql -e "CREATE TABLE database_test.temptable1 (id INT PRIMARY KEY, фамилия te$
+mysql -e "LOAD DATA LOCAL INFILE '/home/myvalue/values1.txt' INTO TABLE databas$
+mysql -e "LOAD DATA LOCAL INFILE '/home/myvalue/values.txt' INTO TABLE database$
+mysql -e "UPDATE database_test.orders t1 JOIN database_test.temptable t2 ON t1.$
+mysql -e "UPDATE database_test.orders t1 JOIN database_test.temptable t2 on t1.$
+mysql -e "UPDATE database_test.clients t1 JOIN database_test.temptable1 t2 ON t$
+mysql -e "UPDATE database_test.clients t1 JOIN database_test.temptable1 t2 ON t$
+mysql -e "UPDATE database_test.clients t1 JOIN database_test.temptable1 t2 ON t$
+mysql -e "DROP TABLE IF EXISTS database_test.temptable;"
+mysql -e "DROP TABLE IF EXISTS database_test.temptable1;"  
+
+
 
 
 
