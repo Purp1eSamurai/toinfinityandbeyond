@@ -58,15 +58,15 @@ mysql -e "LOAD DATA LOCAL INFILE '/home/myvalue/values.txt' INTO TABLE database_
 
 mysql -e "DROP TABLE IF EXISTS database_test.temptable;"
 mysql -e "DROP TABLE IF EXISTS database_test.temptable1;"
-mysql -e "CREATE TABLE database_test.temptable (id INT, имя text, цена INT);"
-mysql -e "CREATE TABLE database_test.temptable1 (id INT PRIMARY KEY, фамилия te$
-mysql -e "LOAD DATA LOCAL INFILE '/home/myvalue/values1.txt' INTO TABLE databas$
-mysql -e "LOAD DATA LOCAL INFILE '/home/myvalue/values.txt' INTO TABLE database$
-mysql -e "UPDATE database_test.orders t1 JOIN database_test.temptable t2 ON t1.$
-mysql -e "UPDATE database_test.orders t1 JOIN database_test.temptable t2 on t1.$
-mysql -e "UPDATE database_test.clients t1 JOIN database_test.temptable1 t2 ON t$
-mysql -e "UPDATE database_test.clients t1 JOIN database_test.temptable1 t2 ON t$
-mysql -e "UPDATE database_test.clients t1 JOIN database_test.temptable1 t2 ON t$
+mysql -e "CREATE TABLE database_test.temptable  (id INT, имя text, цена INT,PRIMARY KEY(id));"
+mysql -e "CREATE TABLE database_test.temptable1 (id INT PRIMARY KEY, фамилия text, страна text, заказ INT, FOREIGN KEY(заказ) REFERENCES orders(id));"
+mysql -e "LOAD DATA LOCAL INFILE '/home/myvalue/values1.txt' INTO TABLE database_test.temptable FIELDS TERMINATED BY ',' LINES TERMINATED BY '|';"
+mysql -e "LOAD DATA LOCAL INFILE '/home/myvalue/values.txt' INTO TABLE database_test.temptable1 FIELDS TERMINATED BY ',' LINES TERMINATED BY '|';"
+mysql -e "UPDATE database_test.orders t1 JOIN database_test.temptable t2 ON t1.id = t2.id SET t1.имя = t2.имя;"
+mysql -e "UPDATE database_test.orders t1 JOIN database_test.temptable t2 on t1.id = t2.id SET t1.цена = t2.цена;"
+mysql -e "UPDATE database_test.clients t1 JOIN database_test.temptable1 t2 ON t1.id = t2.id SET t2.фамилия = t2.фамилия;"
+mysql -e "UPDATE database_test.clients t1 JOIN database_test.temptable1 t2 ON t1.id = t2.id SET t2.страна = t2.страна;"
+mysql -e "UPDATE database_test.clients t1 JOIN database_test.temptable1 t2 ON t1.id = t2.id SET t2.заказ = t2.заказ;"
 mysql -e "DROP TABLE IF EXISTS database_test.temptable;"
 mysql -e "DROP TABLE IF EXISTS database_test.temptable1;"  
 
