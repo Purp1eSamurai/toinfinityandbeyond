@@ -4,7 +4,7 @@ if="ens18"
 ssh="22"    
 http="80"
 https="443"
-User="dbUser=usertest"
+User="usertest"
 Pass="dbPass=mypassword"
 
 sudo ufw allow in on "$if" to any port "$http"
