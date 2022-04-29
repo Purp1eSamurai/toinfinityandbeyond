@@ -50,8 +50,6 @@ mysql -e "DROP TABLE IF EXISTS database_test.clients"
 mysql -e "DROP TABLE IF EXISTS database_test.orders"
 mysql -e "CREATE TABLE IF NOT EXISTS database_test.orders (id INT, имя text, цена INT,PRIMARY KEY(id));"
 mysql -e "CREATE TABLE IF NOT EXISTS database_test.clients (id INT PRIMARY KEY, фамилия text, страна text, заказ INT, FOREIGN KEY(заказ) REFERENCES orders(id));"
-#mysql -e "INSERT IGNORE INTO  database_test.orders VALUES (1, 'Шоколад', 10), (2, 'Принтер', 3000), (3, 'Книга', 500), (4, 'Монитор' 7000), (5, 'Гитара', 4000);"
-#mysql -e "INSERT IGNORE INTO database_test.clients VALUES (1, 'Иванов', 'USA',3), (2, 'Петров' 'Canada'2), (3, 'Chan' 'Japan',5), (4, 'Дмитриев', 'Russia',1),(5, 'Blackmore', 'Russia',4);"
 mysql -e "LOAD DATA LOCAL INFILE '/home/myvalue/values1.txt' INTO TABLE database_test.orders FIELDS TERMINATED BY ',' LINES TERMINATED BY '|';"
 mysql -e "LOAD DATA LOCAL INFILE '/home/myvalue/values.txt' INTO TABLE database_test.clients FIELDS TERMINATED BY ',' LINES TERMINATED BY '|';"
 
@@ -62,13 +60,36 @@ mysql -e "CREATE TABLE database_test.temptable  (id INT, имя text, цена I
 mysql -e "CREATE TABLE database_test.temptable1 (id INT PRIMARY KEY, фамилия text, страна text, заказ INT, FOREIGN KEY(заказ) REFERENCES orders(id));"
 mysql -e "LOAD DATA LOCAL INFILE '/home/myvalue/values1.txt' INTO TABLE database_test.temptable FIELDS TERMINATED BY ',' LINES TERMINATED BY '|';"
 mysql -e "LOAD DATA LOCAL INFILE '/home/myvalue/values.txt' INTO TABLE database_test.temptable1 FIELDS TERMINATED BY ',' LINES TERMINATED BY '|';"
-mysql -e "UPDATE database_test.orders t1 JOIN database_test.temptable t2 ON t1.id = t2.id SET t1.имя = t2.имя;"
-mysql -e "UPDATE database_test.orders t1 JOIN database_test.temptable t2 on t1.id = t2.id SET t1.цена = t2.цена;"
-mysql -e "UPDATE database_test.clients t1 JOIN database_test.temptable1 t2 ON t1.id = t2.id SET t2.фамилия = t2.фамилия;"
-mysql -e "UPDATE database_test.clients t1 JOIN database_test.temptable1 t2 ON t1.id = t2.id SET t2.страна = t2.страна;"
-mysql -e "UPDATE database_test.clients t1 JOIN database_test.temptable1 t2 ON t1.id = t2.id SET t2.заказ = t2.заказ;"
-mysql -e "DROP TABLE IF EXISTS database_test.temptable;"
-mysql -e "DROP TABLE IF EXISTS database_test.temptable1;"  
+#mysql -e "UPDATE database_test.orders t1 JOIN database_test.temptable t2 on t1.id = t2.id SET t1.имя = t2.имя;"
+#mysql -e "UPDATE database_test.orders t1 JOIN database_test.temptable t2 on t1.id = t2.id SET t1.цена = t2.цена;"
+#mysql -e "UPDATE database_test.clients t1 JOIN database_test.temptable1 t2 ON t1.id = t2.id SET t2.фамилия = t2.фамилия;"
+#mysql -e "UPDATE database_test.clients t1 JOIN database_test.temptable1 t2 ON t1.id = t2.id SET t2.страна = t2.страна;"
+#mysql -e "UPDATE database_test.clients t1 JOIN database_test.temptable1 t2 ON t1.id = t2.id SET t2.заказ = t2.заказ;"
+№mysql -e "DROP TABLE IF EXISTS database_test.temptable;"
+№mysql -e "DROP TABLE IF EXISTS database_test.temptable1;"  
+
+mysql -u "$User" -p"$pwd" <<EOF
+UPDATE
+ database_test.orders t1
+JOIN
+ database_test.temptable t2
+  ON t1.id = t2.id
+SET
+ t1.имя = t2.имя,
+ t1.цена = t2.цена
+EOF
+
+mysql -u "$User" -p"$pwd" <<EOF
+UPDATE
+ database_test.clients t1
+JOIN
+ database_test.temptable1 t2
+  ON t1.id = t2.id
+SET
+ t1.фамилия = t2.фамилия,
+ t1.страна = t2.страна,
+ t1.заказ = t2.заказ
+EOF
 
 
 
