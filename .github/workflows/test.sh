@@ -65,8 +65,8 @@ mysql -e "LOAD DATA LOCAL INFILE '/home/myvalue/values.txt' INTO TABLE database_
 #mysql -e "UPDATE database_test.clients t1 JOIN database_test.temptable1 t2 ON t1.id = t2.id SET t2.фамилия = t2.фамилия;"
 #mysql -e "UPDATE database_test.clients t1 JOIN database_test.temptable1 t2 ON t1.id = t2.id SET t2.страна = t2.страна;"
 #mysql -e "UPDATE database_test.clients t1 JOIN database_test.temptable1 t2 ON t1.id = t2.id SET t2.заказ = t2.заказ;"
-№mysql -e "DROP TABLE IF EXISTS database_test.temptable;"
-№mysql -e "DROP TABLE IF EXISTS database_test.temptable1;"  
+#mysql -e "DROP TABLE IF EXISTS database_test.temptable;"
+#mysql -e "DROP TABLE IF EXISTS database_test.temptable1;"  
 
 mysql -u "$User" -p"$pwd" <<EOF
 UPDATE
